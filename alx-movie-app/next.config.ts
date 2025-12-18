@@ -1,13 +1,18 @@
-import type { NextConfig } from "next";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+
+const withPWA = withPWAInit({
+  dest: "public",
+});
+
+const nextConfig = {
   reactStrictMode: true,
-  // next.config.js
-
   images: {
-    domains: ["m.media-amazon.com"], // ✅ allow Amazon media CDN
+    domains: ["m.media-amazon.com"],
   },
 };
 
-export default nextConfig;
+export default withPWA({
+  ...nextConfig,
+});
